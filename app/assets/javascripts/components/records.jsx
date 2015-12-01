@@ -21,6 +21,8 @@ this.Records = React.createClass({
     return (
       <div className='records'>
         <h2 className='title'>Records</h2>
+        <RecordForm />
+        <hr/>
         <table className='table table-bordered'>
           <thead>
             <tr>
@@ -35,6 +37,5 @@ this.Records = React.createClass({
         </table>
       </div>
     )
-
   }
 });
