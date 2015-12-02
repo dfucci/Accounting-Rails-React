@@ -6,9 +6,9 @@ class RecordsController < ApplicationController
   def create
     @record = Record.new(record_params)
     if @record.save
-      render json: @record.else
-      else
-        render json: @record.errors, status: :unprocessable_entity
+      render json: @record
+    else
+      render json: @record.errors, status: :unprocessable_entity
     end
   end
   private

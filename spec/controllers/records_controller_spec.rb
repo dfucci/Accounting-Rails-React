@@ -14,4 +14,12 @@ describe RecordsController do
     end
     it "something"
   end
+
+  describe "POST #index" do
+    it "adds one record" do
+      expect {
+        post :create, record: FactoryGirl.attributes_for(:record)
+      }.to change(Record,:count).by 1
+    end
+  end
 end

@@ -18,7 +18,6 @@ RecordForm = React.createClass({
 
     handleSubmit(e){
         e.preventDefault();
-        console.log("submitting");
         $.post('', {record: this.state}, (data)=>{
             this.props.handleNewRecord(data);
             this.setState(this.getInitialState());
@@ -27,8 +26,8 @@ RecordForm = React.createClass({
 
     render(){
         return(
-            <form className="form-inline">
-                <div className="form-group" onSubmit={this.handleSubmit}>
+            <form className="form-inline" onSubmit={this.handleSubmit}>
+                <div className="form-group">
                     <input type="text"
                         placeholder="Date"
                         name="date"
