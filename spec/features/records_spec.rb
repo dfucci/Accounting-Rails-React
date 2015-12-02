@@ -5,4 +5,5 @@ describe "accessing the Records page", :js => true do
     visit '/records'
     expect(page).to have_content 'Records'
   end
+
 end

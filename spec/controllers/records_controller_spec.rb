@@ -12,5 +12,6 @@ describe RecordsController do
       get :index
       expect(response).to render_template :index
     end
+    it "something"
   end
 end

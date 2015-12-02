@@ -1,6 +1,4 @@
 class RecordsController < ApplicationController
-  #comment
-
   def index
     @records = Record.all.to_a
   end
