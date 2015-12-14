@@ -1,6 +1,6 @@
 this.Records = React.createClass({
   credits(){
-    credits = this.state.records.filter(function(val){
+    let credits = this.state.records.filter(function(val){
       return val.amount >= 0;
     });
     return credits.reduce(function(prev, curr){
@@ -9,7 +9,7 @@ this.Records = React.createClass({
   },
 
   debits(){
-    debits = this.state.records.filter(function(val){
+    let debits = this.state.records.filter(function(val){
       return val.amount < 0;
     });
     return debits.reduce(function(prev, curr){
@@ -40,7 +40,7 @@ this.Records = React.createClass({
   },
 
   addRecord(record){
-    records=this.state.records.slice();
+    let records=this.state.records.slice();
     records.push(record);
     this.setState({
       records: records
