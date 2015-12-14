@@ -32,5 +32,6 @@ module AccountsReact
         :request_specs => true
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
+    config.react.addons = true
   end
 end

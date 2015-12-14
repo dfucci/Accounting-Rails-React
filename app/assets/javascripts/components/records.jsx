@@ -35,22 +35,28 @@ this.Records = React.createClass({
 
   renderRecords(){
     return this.state.records.map((record)=>{
-      return <Record key={record.id} record={record} handleDeleteRecord={this.deleteRecord} />;
+      return <Record key={record.id} record={record} handleDeleteRecord={this.deleteRecord} handleEditRecord={this.updateRecord}/>;
     });
   },
 
   addRecord(record){
-    let records=this.state.records.slice();
-    records.push(record);
+    let records = React.addons.update(this.state.records, {$push: [record]});
     this.setState({
       records: records
     });
   },
 
+  updateRecord(record, data){
+    let index = this.state.records.indexOf(record);
+    let records = React.addons.update(this.state.records, {$splice: [[index, 1, data]]});
+    this.replaceState({
+      records: records
+    })
+  },
+
   deleteRecord(record){
-    let records = this.state.records.slice();
-    let index = records.indexOf(record);
-    records.splice(index, 1);
+    let index = this.state.records.indexOf(record);
+    let records = React.addons.update(this.state.records, {$splice: [[index, 1]]})
     this.replaceState({
       records: records,
     });
