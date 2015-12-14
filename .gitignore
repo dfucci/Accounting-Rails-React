@@ -48,5 +48,6 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
-tags
+tags/
 *.swp
+*.swo
