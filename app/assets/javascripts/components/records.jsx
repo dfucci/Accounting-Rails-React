@@ -35,7 +35,7 @@ this.Records = React.createClass({
 
   renderRecords(){
     return this.state.records.map((record)=>{
-      return <Record key={record.id} record={record} />;
+      return <Record key={record.id} record={record} handleDeleteRecord={this.deleteRecord} />;
     });
   },
 
@@ -44,6 +44,15 @@ this.Records = React.createClass({
     records.push(record);
     this.setState({
       records: records
+    });
+  },
+
+  deleteRecord(record){
+    let records = this.state.records.slice();
+    let index = records.indexOf(record);
+    records.splice(index, 1);
+    this.replaceState({
+      records: records,
     });
   },
 
@@ -62,6 +71,7 @@ this.Records = React.createClass({
               <th>Date</th>
               <th>Title</th>
               <th>Amount</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
