@@ -1,4 +1,5 @@
 Record = React.createClass({
+
   render(){
     return(
       <tr>

@@ -1,4 +1,26 @@
 this.Records = React.createClass({
+  credits(){
+    credits = this.state.records.filter(function(val){
+      return val.amount >= 0;
+    });
+    return credits.reduce(function(prev, curr){
+      return prev + parseFloat(curr.amount);
+    }, 0);
+  },
+
+  debits(){
+    debits = this.state.records.filter(function(val){
+      return val.amount < 0;
+    });
+    return debits.reduce(function(prev, curr){
+      return prev + parseFloat(curr.amount);
+    }, 0);
+  },
+
+  balance(){
+    return this.credits() + this.debits();
+  },
+
   getInitialState(){
     return({
       records: this.props.data
@@ -18,17 +40,20 @@ this.Records = React.createClass({
   },
 
   addRecord(record){
-      records=this.state.records.slice();
-      records.push(record);
-      this.setState({
-          records: records
-      });
+    records=this.state.records.slice();
+    records.push(record);
+    this.setState({
+      records: records
+    });
   },
 
   render(){
     return (
       <div className='records'>
         <h2 className='title'>Records</h2>
+        <AmountBox type='success' amount={this.credits()} text='Credit' />
+        <AmountBox type='danger' amount={this.debits()} text='Debits' />
+        <AmountBox type='info' amount={this.balance()} text='Balance' />
         <RecordForm handleNewRecord={this.addRecord}/>
         <hr/>
         <table className='table table-bordered'>
