@@ -47,11 +47,10 @@ Record = React.createClass({
   recordRow(){
     return(
       <tr>
-        <td>{this.props.record.date}</td>
-        <td>{this.props.record.title}</td>
-        <td>{amountFormat( this.props.record.amount )}</td>
+        <td onDoubleClick={this.handleToggle}>{this.props.record.date}</td>
+        <td onDoubleClick={this.handleToggle}>{this.props.record.title}</td>
+        <td onDoubleClick={this.handleToggle}>{amountFormat( this.props.record.amount )}</td>
         <td>
-          <a onClick={this.handleToggle} className='btn btn-default'>Edit</a>
           <a onClick={this.handleDelete} className='btn btn-danger'>Delete</a>
         </td>
       </tr>
